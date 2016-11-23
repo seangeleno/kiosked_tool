@@ -1,8 +1,25 @@
-<% include ../public/partials/metadata %>
-<body>
-  <div class="container">
-    <h1>welcome to index.ejs</h1>
-    <a class="btn btn-success" href="/route1" role="button">View 1</a>
-    <a class="btn btn-warning" href="/route2" role="button">View 2</a>
+<!-- SCRIPTS AND LINKED FILES GO HERE -->
+<% include ../public/partials/header %>
+
+  <body>
+
+    <!-- NAV BAR GOES HERE -->
+    <% include ../public/partials/navbar %>
+
+    <div class="container">
+
+      <h1>welcome to index.ejs</h1>
+      <a class="btn btn-success" href="/route1" role="button">View 1</a>
+      <a class="btn btn-warning" href="/route2" role="button">View 2</a>
+
+      <!-- JUMBOTRON GOES HERE -->
+      <% include ../public/partials/jumbotron %>
+
+
+      <!-- FOOTER + JAVASCRIPTS GO HERE -->
+    <% include ../public/partials/footer %>
   </div>
-</body>
+
+  </body>
+
+</html>

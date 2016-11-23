@@ -1,6 +1,23 @@
-<% include ../public/partials/metadata %>
-<div class="container">
-  <h1>welcome to view 2</h1>
-  <a class="btn btn-warning" href="/" role="button">Index</a>
-  <a class="btn btn-danger" href="/route1" role="button">View 1</a>
-</div>
+<!-- SCRIPTS AND LINKED FILES GO HERE -->
+<% include ../public/partials/header %>
+
+<body>
+
+  <!-- NAV BAR GOES HERE -->
+  <% include ../public/partials/navbar %>
+
+  <div class="container">
+
+    <h1>welcome to index.ejs</h1>
+    <a class="btn btn-warning" href="/" role="button">Index</a>
+    <a class="btn btn-danger" href="/route1" role="button">View 1</a>
+
+    <!-- JUMBOTRON GOES HERE -->
+    <% include ../public/partials/jumbotron %>
+
+  </div>
+
+    <!-- FOOTER + JAVASCRIPTS GO HERE -->
+  <% include ../public/partials/footer %>
+
+</body>
