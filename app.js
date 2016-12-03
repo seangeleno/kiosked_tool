@@ -1,10 +1,8 @@
 var express = require('express'),
     app = express();
-var config = require('./myconfig');
+var config = require('./config');
 
-var db,
-    url = config.db.database + "://" + config.db.localhost + "/" + config.db.local_db_name,
-    mongolaburl = config.mongolab.database + "://" + config.mongolab.username + ":" + config.mongolab.password + "@" + config.mongolab.host + ":" + config.mongolab.port + "/" + config.mongolab.name;
+var db;
 
 var logger = require('./logger'),
 bodyParser = require('body-parser');
@@ -32,14 +30,13 @@ app.post('/route2', function (req, res) {
   res.redirect('/route2');
 });
 
-var localurl = config.db.database + "://" + config.db.host + "/" + config.db.name;
-
 var MongoClient = require('mongodb').MongoClient;
-MongoClient.connect(localurl, function(err, database) {
+
+MongoClient.connect(config.mongolaburl, function(err, database) {
   if (err)
   console.log(err)
   db = database;
-  app.listen(config.server.port, function() {
-    console.log('Magic happens on port ' + config.server.port);
+  app.listen(config.port, function() {
+    console.log('Magic happens on port ' + config.port);
   });
 });
