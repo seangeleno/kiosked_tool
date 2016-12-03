@@ -15,16 +15,28 @@ app.set('view engine', 'ejs');
 app.get('/', function (req, res) {
   res.render('index.ejs');
 });
+
 app.get('/route1', function (req, res) {
-  res.render('view1.ejs');
+  var cursor = db.collection('kiosked_script_formatter').find().toArray(function (err, result) {
+    if (err) console.log(err)
+    console.log(result);
+    res.render('view1.ejs', { kiosked_script_formatter: result });
+  });
 });
+
 app.get('/route2', function (req, res) {
-  res.render('view2.ejs');
+  var cursor = db.collection('tweets').find().toArray(function (err, result) {
+    if (err) console.log(err)
+    console.log(result);
+    res.render('view2.ejs', { tweets: result });
+  });
 });
+
 app.post('/route1', function (req, res) {
   console.log('route1 post accessed successfully');
   res.redirect('/route1');
 });
+
 app.post('/route2', function (req, res) {
   console.log('route2 post accessed successfully');
   res.redirect('/route2');
