@@ -1,22 +1,22 @@
 var express = require('express'),
     router  = express.Router();
 
-router.get('/route1', function (req, res) {
-  res.render('view1.ejs');
+router.get('/users', function (req, res) {
+  res.render('users.ejs');
 });
-router.post('/route1', function (req, res) {
+router.post('/users', function (req, res) {
   var method = req.method;
-  console.log('route1' + method + 'hit');
+  console.log('users' + method + 'hit');
   /* Do Something Cool */
 });
-router.put('/route1', function (req, res) {
+router.put('/users', function (req, res) {
   var method = req.method;
-  console.log('route1' + method + 'hit');
+  console.log('users' + method + 'hit');
   /* Do Something Cool */
 });
-router.delete('/route1', function (req, res) {
+router.delete('/users', function (req, res) {
   var method = req.method;
-  console.log('route1' + method + 'hit');
+  console.log('users' + method + 'hit');
   /* Do Something Cool */
 });
 

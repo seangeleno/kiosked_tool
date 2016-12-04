@@ -16,25 +16,31 @@ app.get('/', function (req, res) {
   res.render('index.ejs');
 });
 
-app.get('/route1', function (req, res) {
-  var cursor = db.collection('kiosked_script_formatter').find().toArray(function (err, result) {
+app.get('/users', function (req, res) {
+  var cursor = db.collection('users').find().toArray(function (err, result) {
     if (err) console.log(err)
     console.log(result);
-    res.render('view1.ejs', { kiosked_script_formatter: result });
+    res.render('users.ejs', { users: result });
   });
 });
 
 app.get('/route2', function (req, res) {
-  var cursor = db.collection('tweets').find().toArray(function (err, result) {
+  var cursor = db.collection('script_formatter').find().toArray(function (err, result) {
     if (err) console.log(err)
     console.log(result);
-    res.render('view2.ejs', { tweets: result });
+    res.render('view2.ejs', { script_formatter: result });
   });
 });
 
-app.post('/route1', function (req, res) {
-  console.log('route1 post accessed successfully');
-  res.redirect('/route1');
+app.post('/users', function (req, res) {
+
+  console.log(req.body);
+
+  db.collection('users').save(req.body, function (err, result) {
+    if (err) return console.log(err);
+    console.log('users route accessed successfully!');
+  });
+  res.redirect('/users');
 });
 
 app.post('/route2', function (req, res) {
