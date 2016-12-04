@@ -24,11 +24,11 @@ app.get('/users', function (req, res) {
   });
 });
 
-app.get('/route2', function (req, res) {
+app.get('/script_formatter', function (req, res) {
   var cursor = db.collection('script_formatter').find().toArray(function (err, result) {
     if (err) console.log(err)
     console.log(result);
-    res.render('view2.ejs', { script_formatter: result });
+    res.render('script_formatter.ejs', { script_formatter: result });
   });
 });
 
@@ -43,9 +43,14 @@ app.post('/users', function (req, res) {
   res.redirect('/users');
 });
 
-app.post('/route2', function (req, res) {
-  console.log('route2 post accessed successfully');
-  res.redirect('/route2');
+app.post('/script_formatter', function (req, res) {
+
+  console.log(req.body);
+  db.collection.save(req.body, function (err, result) {
+    if (err) return console.log(err)
+    console.log('script_formatter posted successfully!!!');
+  });
+  res.redirect('/script_formatter');
 });
 
 var MongoClient = require('mongodb').MongoClient;

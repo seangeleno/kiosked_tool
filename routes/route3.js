@@ -2,7 +2,7 @@ var express = require('express'),
     router  = express.Router();
 
 router.get('/route3', function (req, res) {
-  res.render('view2.ejs');
+  res.render('script_formatter.ejs');
 });
 router.post('/route3', function (req, res) {
   var method = req.method;

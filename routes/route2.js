@@ -1,22 +1,22 @@
 var express = require('express'),
     router  = express.Router();
 
-router.get('/route2', function (req, res) {
-  res.render('view2.ejs');
+router.get('/script_formatter', function (req, res) {
+  res.render('script_formatter.ejs');
 });
-router.post('/route2', function (req, res) {
+router.post('/script_formatter', function (req, res) {
   var method = req.method;
-  console.log('route2' + method + 'hit');
+  console.log('script_formatter' + method + 'hit');
   /* Do Something Cool */
 });
-router.put('/route2', function (req, res) {
+router.put('/script_formatter', function (req, res) {
   var method = req.method;
-  console.log('route2' + method + 'hit');
+  console.log('script_formatter' + method + 'hit');
   /* Do Something Cool */
 });
-router.delete('/route2', function (req, res) {
+router.delete('/script_formatter', function (req, res) {
   var method = req.method;
-  console.log('route2' + method + 'hit');
+  console.log('script_formatter' + method + 'hit');
   /* Do Something Cool */
 });
 
