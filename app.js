@@ -180,7 +180,7 @@ app.post('/about', function(req, res) {
 
 var MongoClient = require('mongodb').MongoClient;
 
-MongoClient.connect(, function(err, database) {
+MongoClient.connect(process.env.PROD_MONGODB, function(err, database) {
     if (err)
         console.log(err)
     db = database;
