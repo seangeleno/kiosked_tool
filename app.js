@@ -27,7 +27,7 @@ app.get('/users', function (req, res) {
 });
 
 app.get('/script_formatter', function (req, res) {
-  var cursor = db.collection('script_formatter').find().toArray(function (err, result) {
+  var cursor = db.collection('script_formatter').find().sort({"_id": -1}).limit(3).toArray(function (err, result) {
     if (err) console.log(err)
     console.log(result);
     res.render('script_formatter.ejs', { script_formatter: result });
