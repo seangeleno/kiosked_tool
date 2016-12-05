@@ -180,11 +180,11 @@ app.post('/about', function(req, res) {
 
 var MongoClient = require('mongodb').MongoClient;
 
-MongoClient.connect(config.mongolaburl, function(err, database) {
+MongoClient.connect(, function(err, database) {
     if (err)
         console.log(err)
     db = database;
-    app.listen(config.port, function() {
-        console.log('Magic happens on port ' + config.port);
+    app.listen(process.env.PORT, function() {
+        console.log('Magic happens on port ' + process.env.PORT);
     });
 });
