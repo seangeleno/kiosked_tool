@@ -10,31 +10,32 @@
       <form class="script_formatter" action="/script_formatter" method="POST">
 
       <div class="row">
-        <div class="col-md-4">
-          <label for="basic-url">Give me a URL to format!</label>
-          <div class="input-group">
-            <span class="input-group-addon" id="basic-addon3">ie: lifedaily.com/</span>
-            <input name="url" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-          </div>
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <label for="pubID">Publisher ID:</label>
           <div class="input-group">
             <input type="text" name="pubID" class="form-control" placeholder="PUBLISHER ID#" aria-describedby="basic-addon1">
           </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-6">
           <label for="pubID">Site ID:</label>
           <div class="input-group">
             <input type="text" name="siteID" class="form-control" placeholder="SITE ID#" aria-describedby="basic-addon1">
           </div>
         </div>
       </div>
-      <br>
+
+      <div class="col-md-12">
+        <label for="basic-url">Blast-off to Formatland!</label>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon3">ie: lifedaily.com/</span>
+          <input name="url" type="text" class="form-control" placeholder="enter a goddammn url already..." id="basic-url" aria-describedby="basic-addon3">
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-md-12 text-center">
-
+          <br>
           <button type="submit" name="button" id="script_formatter_submit_button" class="btn btn-lg btn-success">Format &raquo;</button>
         </div>
       </div>

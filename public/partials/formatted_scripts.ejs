@@ -1,39 +1,61 @@
 <!-- url, hardcoded and dfp scripts row -->
 <% for (var i = 0 ; i < script_formatter.length ; i++){%>
-<div class="row">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">MongoDB Record ID: <%= script_formatter[i]._id %></h3>
+    </div>
+    <div class="panel-body">
+    <div class="row">
+      <!-- url panel -->
+      <div class="col-md-4">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h3 class="panel-title">URL</h3>
+              </div>
+              <div class="panel-body">
+                <%= script_formatter[i].url %>
+              </div>
+            </div>
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h3 class="panel-title">Publisher ID#</h3>
+              </div>
+              <div class="panel-body">
+                <%= script_formatter[i].pubID %>
+              </div>
+            </div>
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h3 class="panel-title">siteID</h3>
+              </div>
+              <div class="panel-body">
+                <%= script_formatter[i].siteID %>
+              </div>
+            </div>
+      </div>
 
-  <!-- url panel -->
-  <div class="col-md-4">
-        <div class="panel panel-success">
+      <!-- pubid panel -->
+      <div class="col-md-4">
+        <div class="panel panel-warning">
           <div class="panel-heading">
-            <h3 class="panel-title">URL</h3>
+            <h3 class="panel-title">El Clasico</h3>
           </div>
           <div class="panel-body">
-            <%= script_formatter[i].url %>
+            <%= script_formatter[i].hardcodedScript %>
           </div>
         </div>
-  </div>
+      </div>
 
-  <!-- pubid panel -->
-  <div class="col-md-4">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">Publisher ID#</h3>
-      </div>
-      <div class="panel-body">
-        <%= script_formatter[i].pubID %>
-      </div>
-    </div>
-  </div>
-
-  <!-- siteid panel -->
-  <div class="col-md-4">
-    <div class="panel panel-warning">
-      <div class="panel-heading">
-        <h3 class="panel-title">Site ID#</h3>
-      </div>
-      <div class="panel-body">
-        <%= script_formatter[i].siteID %>
+      <!-- siteid panel -->
+      <div class="col-md-4">
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title">DFP Format</h3>
+          </div>
+          <div class="panel-body">
+            <%= script_formatter[i].dfpFormattedScript %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
