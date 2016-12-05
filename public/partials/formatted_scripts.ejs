@@ -1,0 +1,41 @@
+<!-- url, hardcoded and dfp scripts row -->
+<% for (var i = 0 ; i < script_formatter.length ; i++){%>
+<div class="row">
+
+  <!-- url panel -->
+  <div class="col-md-4">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">URL</h3>
+          </div>
+          <div class="panel-body">
+            <%= script_formatter[i].url %>
+          </div>
+        </div>
+  </div>
+
+  <!-- pubid panel -->
+  <div class="col-md-4">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Publisher ID#</h3>
+      </div>
+      <div class="panel-body">
+        <%= script_formatter[i].pubID %>
+      </div>
+    </div>
+  </div>
+
+  <!-- siteid panel -->
+  <div class="col-md-4">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h3 class="panel-title">Site ID#</h3>
+      </div>
+      <div class="panel-body">
+        <%= script_formatter[i].siteID %>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>

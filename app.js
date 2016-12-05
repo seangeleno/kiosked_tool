@@ -81,8 +81,15 @@ app.post('/users', function (req, res) {
 
 app.post('/script_formatter', function (req, res) {
 
+  var inputNewSite = {
+        url: req.body.url,
+        pubID: req.body.pubID,
+        siteID: req.body.siteID,
+        // script_for_publisher: dfpFormattedScript(req.body.siteID, req.body.pubID, req.body.siteID)
+    };
+
   console.log(req.body);
-  db.collection('script_formatter').save(req.body, function (err, result) {
+  db.collection('script_formatter').save(inputNewSite, function (err, result) {
     if (err) return console.log(err)
     console.log('script_formatter posted successfully!!!');
   });
