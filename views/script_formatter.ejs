@@ -1,47 +1,117 @@
 <!-- SCRIPTS AND LINKED FILES GO HERE -->
 <% include ../public/partials/header %>
 
-<!-- NAV BAR GOES HERE -->
-<% include ../public/partials/navbar %>
-<br>
-  <div class="container">
-    <!-- JUMBOTRON GOES HERE -->
-    <div class="jumbotron">
-      <form class="script_formatter" action="/script_formatter" method="POST">
+    <!-- NAV BAR GOES HERE -->
+    <% include ../public/partials/navbar %>
+        <br>
+        <div class="container">
+            <!-- JUMBOTRON GOES HERE -->
+            <div class="jumbotron">
 
-      <div class="row">
-        <div class="col-md-6">
-          <label for="pubID">Publisher ID:</label>
-          <div class="input-group">
-            <input type="text" name="pubID" class="form-control" placeholder="PUBLISHER ID#" aria-describedby="basic-addon1">
-          </div>
-        </div>
+                <form class="script_formatter" id="script_submit_form" action="/script_formatter" method="POST">
 
-        <div class="col-md-6">
-          <label for="pubID">Site ID:</label>
-          <div class="input-group">
-            <input type="text" name="siteID" class="form-control" placeholder="SITE ID#" aria-describedby="basic-addon1">
-          </div>
-        </div>
-      </div>
+                    <!-- pubid, siteid, dropdowns with size and device row -->
+                    <div class="row text-center">
+                        <div class="col-lg-2 col-md-2 col-sm-12">
+                            <label for="pubID">Publisher ID:</label>
+                            <div class="input-group">
+                                <input type="text" name="pubID" class="form-control text-center" placeholder="PUBLISHER ID#" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12">
+                            <label for="siteID">Site ID: </label>
+                            <div class="input-group">
+                                <input type="text" name="siteID" class="form-control center" placeholder="SITE ID#" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12">
+                            <!-- Split button -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-lg">Device</button>
+                                <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" name="allDevices">Desktop, Tablet and Mobile</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">Feeling Picky?</li>
+                                    <li><a href="#" name="desktop">Desktop</a></li>
+                                    <li><a href="#" name="tablet">Tablet</a></li>
+                                    <li><a href="#" name="mobile">Mobile</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12">
+                            <!-- Split button -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-lg">Ad Size</button>
+                                <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <span class="caret"></span>
+                                  <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">Classic Sizes</li>
+                                    <li><a href="#" name="728x90">728x90</a></li>
+                                    <li><a href="#" name="320x50">320x50</a></li>
+                                    <li><a href="#" name="300x250">300x250</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">Video Sizes</li>
+                                    <li><a href="#" name="640x360">640x360</a></li>
+                                    <li><a href="#" name="300x250">300x250</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12">
+                            <!-- Split button -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-lg">Region</button>
+                                <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <span class="caret"></span>
+                                  <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" name="NA">NA - North America</a></li>
+                                    <li><a href="#" name="EMEA">EMEA - Europe and Middle EAst</a></li>
+                                    <li><a href="#" name="APAC">APAC - Asia Pacific</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- pubid, siteid, dropdowns with size and device row end-->
 
-      <div class="col-md-12">
-        <label for="basic-url">Blast-off to Formatland!</label>
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon3">ie: lifedaily.com/</span>
-          <input name="url" type="text" class="form-control" placeholder="enter a goddammn url already..." id="basic-url" aria-describedby="basic-addon3">
-        </div>
-      </div>
+                    <br>
 
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <br>
-          <button type="submit" name="button" id="script_formatter_submit_button" class="btn btn-lg btn-success">Format &raquo;</button>
+                    <!-- url input -->
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <label for="basic-url">Blast-off to Formatland!</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon3">ie: lifedaily.com/</span>
+                                <input name="siteUrl" type="text" class="form-control" placeholder="feed me urls...me hungry for urls!" id="basic-url" aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <br>
+                            <button type="submit" name="button" id="script_formatter_submit_button" class="btn btn-lg btn-success">Format &raquo;</button>
+                        </div>
+                    </div>
+                    <!-- url input -->
+
+
+                </form>
+                <!-- end of form     -->
+
+            </div>
+            <!-- end of jumbotron       -->
+
         </div>
-      </div>
-    </form>
-  </div>
-    <% include ../public/partials/formatted_scripts %>
-<!-- FOOTER + JAVASCRIPTS GO HERE -->
-<% include ../public/partials/footer %>
-</div>
+        <!-- end of container       -->
+
+        <% include ../public/partials/formatted_scripts %>
+            <!-- FOOTER + JAVASCRIPTS GO HERE -->
+            <% include ../public/partials/footer %>
+                </div>

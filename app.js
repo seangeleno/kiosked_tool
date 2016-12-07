@@ -91,13 +91,13 @@ app.post('/users', function(req, res) {
 
 app.post('/script_formatter', function(req, res) {
 
-  function hardcodedScript(siteUrl, pubID, siteID) {
+  function hardcodedScript(url, pubID, siteID) {
         var beginNote = "<!-- Begin Kiosked - ",
             untilPub = " -->\ <script type='text/javascript' async='async' src='//scripts.kiosked.com/loader/kiosked-loader.js?pub=",
             postPub = "&site=",
             postSite = "'></script>\<!-- End Kiosked - ",
             lastPart = " -->",
-            wholeScript = beginNote + siteUrl + untilPub + pubID + postPub + siteID + postSite + siteUrl + lastPart;
+            wholeScript = beginNote + url + untilPub + pubID + postPub + siteID + postSite + url + lastPart;
         wholeScript.replace(/\"/g, "");
         return wholeScript;
 
@@ -114,18 +114,70 @@ app.post('/script_formatter', function(req, res) {
 
     }
 
+
+  var ksspFormatted = {
+    kiosked: "Kiosked",
+
+  section_layout: function (region, publisher_name, placement_size) {
+    var sectionLayoutFormatted = req.body.region + "_" + req.body.url + "_" + req.body.publisher_name + "_" + req.body.placement_size;
+    return sectionLayoutFormatted;
+  },
+
+  section: function (region, url, placement_size) {
+    var section = req.body.region + "_" + req.body.url + "_" + req.body.placement_size + "_" + req.body.device;
+    return section;
+  },
+  campaign: function (region, url, kiosked) {
+    var campaign = req.body.region + "_" + req.body.url + "_" + this.kiosked;
+    return campaign;
+  },
+  line_item: function (region, url, placement_size) {
+    var line_item = req.body.region + "_" + req.body.url + "_"  + req.body.placement_size + this.kiosked;
+    return line_item;
+  },
+  creative: function (region, url, placement_size) {
+    var creativeFormatted = req.body.region + "_" + req.body.url  + "_" + req.body.placement_size + "_" + this.kiosked;
+    return creativeFormatted;
+  }
+
+};
+
+
+  var ksspFormat = {
+    kiosked: "Kiosked",
+    region: req.body.region,
+    publisher_name: req.body.publisher_name,
+    section_layout: ksspFormatted.section_layout(req.body.region, req.body.publisher_name, req.body.placement_size),
+    section: ksspFormatted.section(req.body.region, req.body.url),
+    campaign: ksspFormatted.campaign(req.body.region, req.body.url, this.kiosked),
+    line_item: ksspFormatted.line_item(req.body.region, req.body.url, req.body.placement_size),
+    creative: ksspFormatted.creative(req.body.region, req.body.url, req.body.placement_size),
+
+  };
+
     var inputNewSite = {
         url: req.body.url,
         pubID: req.body.pubID,
         siteID: req.body.siteID,
+        ad_unit: req.body.ad_unit,
+        device: req.body.device,
+        placement_size: req.body.placement_size,
+
         hardcodedScript: hardcodedScript(req.body.url, req.body.pubID, req.body.siteID),
-        dfpFormattedScript: dfpFormattedScript(req.body.url, req.body.pubID, req.body.siteID)
+        dfpFormattedScript: dfpFormattedScript(req.body.url, req.body.pubID, req.body.siteID),
+        mustFormatted: mustFormat(req.body.url, req.body.ad_unit, req.body.device, req.body.placement_size)
     };
 
+    function mustFormat (){
+      var mustFormatted = req.body.url + " - " + req.body.ad_type + " - " + req.body.placement_size;
+      return mustFormatted;
+    }
+
     console.log(req.body);
-    db.collection('script_formatter').save(inputNewSite, function(err, result) {
+    db.collection('script_formatter').save({inputNewSite, ksspFormat}, function(err, result) {
         if (err)
             return console.log(err)
+        console.log(inputNewSite + "\n" + ksspFormat);
         console.log('script_formatter posted successfully!!!');
     });
     res.redirect('/script_formatter');
@@ -180,11 +232,19 @@ app.post('/about', function(req, res) {
 
 var MongoClient = require('mongodb').MongoClient;
 
-MongoClient.connect(process.env.PROD_MONGODB, function(err, database) {
+// MongoClient.connect(process.env.PROD_MONGODB, function(err, database) {
+//     if (err)
+//         console.log(err)
+//     db = database;
+//     app.listen(process.env.PORT, function() {
+//         console.log('Magic happens on port ' + process.env.PORT);
+//     });
+// });
+MongoClient.connect(config.mongolaburl, function(err, database) {
     if (err)
         console.log(err)
     db = database;
-    app.listen(process.env.PORT, function() {
-        console.log('Magic happens on port ' + process.env.PORT);
+    app.listen(config.port, function() {
+        console.log('Magic happens on port ' + config.port);
     });
 });

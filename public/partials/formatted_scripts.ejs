@@ -1,11 +1,10 @@
 <!-- url, hardcoded and dfp scripts row -->
 <% for (var i = 0 ; i < script_formatter.length ; i++){%>
 <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">MongoDB Record ID: <%= script_formatter[i]._id %></h3>
-    </div>
+  <div class="panel-heading">
+  <h3 class="panel-title">MongoDB Record ID: <%= script_formatter[i]._id %></h3>
+</div>
     <div class="panel-body">
-    <div class="row">
       <!-- url panel -->
       <div class="col-md-4">
             <div class="panel panel-success">
@@ -26,10 +25,34 @@
             </div>
             <div class="panel panel-success">
               <div class="panel-heading">
-                <h3 class="panel-title">siteID</h3>
+                <h3 class="panel-title">Site ID#</h3>
               </div>
               <div class="panel-body">
                 <%= script_formatter[i].siteID %>
+              </div>
+            </div>
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h3 class="panel-title">Ad Unit</h3>
+              </div>
+              <div class="panel-body">
+                <%= script_formatter[i].ad_unit %>
+              </div>
+            </div>
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h3 class="panel-title">Placement Size</h3>
+              </div>
+              <div class="panel-body">
+                <%= script_formatter[i].placement_size %>
+              </div>
+            </div>
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h3 class="panel-title">Device</h3>
+              </div>
+              <div class="panel-body">
+                <%= script_formatter[i].device %>
               </div>
             </div>
       </div>
@@ -43,11 +66,43 @@
           <div class="panel-body">
             <%= script_formatter[i].hardcodedScript %>
           </div>
-        </div>
       </div>
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title">Section Layout</h3>
+          </div>
+          <div class="panel-body">
+            <%= script_formatter[i].section_layout %>
+          </div>
+      </div>
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title">Section</h3>
+          </div>
+          <div class="panel-body">
+            <%= script_formatter[i].sectionID %>
+          </div>
+      </div>
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title">campaign</h3>
+          </div>
+          <div class="panel-body">
+            <%= script_formatter[i].campaign %>
+          </div>
+      </div>
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title">Placement</h3>
+          </div>
+          <div class="panel-body">
+            <%= script_formatter[i].placementID %>
+          </div>
+        </div>
+    </div>
 
-      <!-- siteid panel -->
-      <div class="col-md-4">
+      <!-- DFP panel -->
+      <div class="col-lg-4">
         <div class="panel panel-danger">
           <div class="panel-heading">
             <h3 class="panel-title">DFP Format</h3>
@@ -57,7 +112,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
+
 </div>
 <% } %>
