@@ -22,7 +22,7 @@
                         <div class="col-md-6">
                           <h5><span class="label label-primary">Site ID</span></h5>
                             <div class="input-group">
-                                <input type="text" name="siteID" class="form-control center" placeholder="SITE ID#" aria-describedby="basic-addon1">
+                                <input type="text" name="siteID" class="form-control" placeholder="SITE ID#" aria-describedby="basic-addon1">
                             </div>
                         </div>
                     </div>
@@ -30,27 +30,27 @@
                     <br>
                     <div class="row">
                       <div class="col-md-4">
-                        <h4><span class="label label-success">Region</span></h4>
+                        <h4><span class="label label-success" name="">Region</span></h4>
                       </div>
                       <div class="col-md-4">
-                      <h4><span class="label label-warning">Device</span></h4>
+                      <h4><span class="label label-warning" name="">Device</span></h4>
                       </div>
                       <div class="col-md-4">
-                        <h4><span class="label label-primary">Size</span></h4>
+                        <h4><span class="label label-primary" name="">Size</span></h4>
                       </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-4">
                             <div class="btn-group" data-toggle="buttons">
-                              <label class="btn btn-primary active">
-                                <input type="radio" name="na" id="option1" autocomplete="off" checked> NA</input>
+                              <label class="btn btn-primary">
+                                <input type="radio" name="na" id="option1" class="form-control" autocomplete="off" checked> NA</input>
                               </label>
                               <label class="btn btn-primary">
-                                <input type="radio" name="emea" id="option2" autocomplete="off"> EMEA</input>
+                                <input type="radio" name="emea" id="option2" class="form-control" autocomplete="off"> EMEA</input>
                               </label>
                               <label class="btn btn-primary">
-                                <input type="radio" name="apac" id="option3" autocomplete="off"> APAC</input>
+                                <input type="radio" name="apac" id="option3" class="form-control" autocomplete="off"> APAC</input>
                               </label>
                           </div>
                         </div>
@@ -59,16 +59,16 @@
                             <!-- Split button -->
                             <div class="btn-group" data-toggle="buttons">
                               <label class="btn btn-primary active">
-                                <input type="radio" name="all_devices" id="option1" autocomplete="off" checked> All Devices
+                                <input type="radio" name="all_devices" id="option1" class="form-control" autocomplete="off" checked> All Devices
                               </label>
                               <label class="btn btn-primary">
-                                <input type="radio" name="desktop" id="option2" autocomplete="off"> Desktop
+                                <input type="radio" name="desktop" id="option2" class="form-control" autocomplete="off"> Desktop
                               </label>
                               <label class="btn btn-primary">
-                                <input type="radio" name="tablet" id="option3" autocomplete="off"> Tablet
+                                <input type="radio" name="tablet" id="option3" class="form-control" autocomplete="off"> Tablet
                               </label>
                               <label class="btn btn-primary">
-                                <input type="radio" name="mobile" id="option3" autocomplete="off"> Mobile
+                                <input type="radio" name="mobile" id="option3" class="form-control" autocomplete="off"> Mobile
                               </label>
                           </div>
                         </div>
@@ -77,16 +77,16 @@
                             <!-- Split button -->
                             <div class="btn-group" data-toggle="buttons">
                               <label class="btn btn-primary active">
-                                <input type="radio" name="all_sizes" id="option1" autocomplete="off" checked> All Sizes</input>
-                              </label>
-                              <label class="btn btn-primary active">
-                                <input type="radio" name="728x90" id="option1" autocomplete="off" checked> 728x90</input>
+                                <input type="radio" name="all_sizes" id="all_sizes" autocomplete="off" class="form-control" checked> All Sizes</input>
                               </label>
                               <label class="btn btn-primary">
-                                <input type="radio" name="320x50" id="option2" autocomplete="off"> 320x50</input>
+                                <input type="radio" name="728x90" id="728x90" class="form-control" autocomplete="off"> 728x90</input>
                               </label>
                               <label class="btn btn-primary">
-                                <input type="radio" name="300x250" id="option3" autocomplete="off"> 300x250</input>
+                                <input type="radio" name="320x50" id="320x50" class="form-control" autocomplete="off"> 320x50</input>
+                              </label>
+                              <label class="btn btn-primary">
+                                <input type="radio" name="300x250" id="300x250" class="form-control" autocomplete="off"> 300x250</input>
                               </label>
                           </div>
                         </div>
@@ -100,7 +100,7 @@
                             <label for="basic-url">Blast-off to Formatland!</label>
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon3">ie: lifedaily.com/</span>
-                                <input name="siteUrl" type="text" class="form-control" placeholder="feed me urls...me hungry for urls!" id="basic-url" aria-describedby="basic-addon3">
+                                <input name="url" type="text" class="form-control" placeholder="feed me urls...me hungry for urls!" id="basic-url" aria-describedby="basic-addon3">
                             </div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
 
 
 
-                </form>
+</form>
                 <!-- end of form     -->
 
             <!-- end of jumbotron       -->

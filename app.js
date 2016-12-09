@@ -90,34 +90,41 @@ app.post('/users', function(req, res) {
 });
 
 app.post('/script_formatter', function(req, res) {
-    var allScriptsAndFormats = {clientScripts, internalFormats, must};
-    var clientScripts = {};
-    clientScripts.hardcodedScriptDeprecatedUsesPubIDAsPerTimoAndDaniel = function(url, pubID, siteID) {
+
+    var requestBody = {
+        url: req.body.url,
+        pubID: req.body.pubID,
+        siteID: req.body.siteID,
+        region: req.body.region,
+        device: req.body.device,
+        ad_size: req.body.ad_size,
+        ad_unit: req.body.ad_unit,
+        hardcodedScriptDeprecatedUsesPubIDAsPerTimoAndDaniel: function(url, pubID, siteID) {
 
             var beginNote = "<!-- Begin Kiosked - ",
                 untilPub = " -->\ <script type='text/javascript' async='async' src='//scripts.kiosked.com/loader/kiosked-loader.js?pub=",
                 postPub = "&site=",
                 postSite = "'></script>\<!-- End Kiosked - ",
                 lastPart = " -->",
-                wholeScript = beginNote + url + untilPub + pubID + postPub + siteID + postSite + url + lastPart;
+                wholeScript = beginNote + req.body.url + untilPub + pubID + postPub + siteID + postSite + req.body.url + lastPart;
             wholeScript.replace(/\"/g, "");
 
             return wholeScript;
 
-        };
-    clientScripts.hardcodedScript = function(url, siteID) {
+        },
+        hardcodedScript: function(url, siteID) {
 
             var beginNote = "<!-- Begin Kiosked - ",
                 untilSite = " -->\n  <script type='text/javascript'>window.__ITGS_started = Date.now();</script>\n  <script type='text/javascript' async='async' src='//scripts.kiosked.com/loader/kiosked-loader.js?site=",
                 postSite = "'></script>\n<!-- End Kiosked - ",
                 lastPart = " -->",
-                wholeScript = beginNote + url + untilSite + siteID + postSite + url + lastPart;
+                wholeScript = beginNote + req.body.url + untilSite + siteID + postSite + req.body.url + lastPart;
             wholeScript.replace(/\"/g, "");
 
             return wholeScript;
 
-          }
-    clientScripts.dfpFormattedScript = function(pubID, siteID) {
+        },
+        dfpFormattedScript: function(pubID, siteID) {
             var beginning = "<script type='text/javascript'>\ var pubId ='",
                 middle = "';\ var siteId ='",
                 end = "';\ var kioskedscript = document.createElement('script');\ kioskedscript.setAttribute('async', 'async');\ kioskedscript.setAttribute('src', '//scripts.kiosked.com/loader/kiosked-loader.js?pub=' + pubId + '&site=' + siteId);\ kioskedscript.setAttribute('type', 'text/javascript');\ var anonscript = document.createElement('script');\ anonscript.setAttribute('async', 'async');\ anonscript.setAttribute('src', '//anonymousdemographics.com/u?pub=' + pubId + '&site=' + siteId + '&ts=0&_response_content_type=js');\ anonscript.setAttribute('type', 'text/javascript');\ window.top.document.body.appendChild(kioskedscript);\ window.top.document.body.appendChild(anonscript);\ </script>",
@@ -126,75 +133,49 @@ app.post('/script_formatter', function(req, res) {
 
             return wholeScript;
 
-        };
+        },
+        injectScript: function(siteID) {
 
-    var internalFormats = {};
-    internalFormats.injectScript = function(siteID) {
+            var beginNote = "window.__ITGS_started = Date.now();\n(function(h, s) { s.src = '//scripts.kiosked.com/loader/kiosked-loader.js?site=",
+                endNote = "';\ns.async = 'async'; h.appendChild(s); })(window.top.document.head, window.top.document.createElement('script'))",
+                wholeScript = beginNote + siteID + endNote;
+            return wholeScript;
 
-        var beginNote = "window.__ITGS_started = Date.now();\n(function(h, s) { s.src = '//scripts.kiosked.com/loader/kiosked-loader.js?site=",
-            endNote = "';\ns.async = 'async'; h.appendChild(s); })(window.top.document.head, window.top.document.createElement('script'))",
-            wholeScript = beginNote + siteID + endNote;
-        return wholeScript;
-
-      };
-    internalFormats.ksspFormatFunctions = {
-
-        section_layout: function(region, url, publisher_name, placement_size) {
+        },
+        section_layout: function(region, url, publisher_name, ad_size) {
             var pubName = req.body.publisher_name;
             pubName.replace(/\s+/g, '_');
-            var sectionLayoutFormatted = req.body.region + "_" + req.body.url + "_" + pubName + "_" + req.body.placement_size;
+            var sectionLayoutFormatted = region + "_" + url + "_" + pubName + "_" + ad_size;
 
             return sectionLayoutFormatted;
         },
         campaign: function(region, url) {
-            var campaign = req.body.region + "_" + req.body.url + "_" + "Kiosked";;
+            var campaign = region + "_" + url + "_Kiosked";;
             return campaign;
-          },
-        section: function(region, url, placement_size) {
-            var section = req.body.region + "_" + req.body.url + "_" + req.body.placement_size + "_" + req.body.device;
+        },
+        section: function(region, url, ad_size) {
+            var section = region + "_" + url + "_" + ad_size + "_" + req.body.device;
             return section;
         },
-        line_item: function(region, url, placement_size) {
-            var line_item = req.body.region + "_" + req.body.url + "_" + req.body.placement_size + "Kiosked";;
+        line_item: function(region, url, ad_size) {
+            var line_item = region + "_" + url + "_" + ad_size + "_Kiosked";;
             return line_item;
         },
-        creative: function(region, url, placement_size) {
-            var creativeFormatted = req.body.region + "_" + req.body.url + "_" + req.body.placement_size + "_" + "Kiosked";;
+        creative: function(region, url, ad_size) {
+            var creativeFormatted = region + "_" + url + "_" + ad_size + "_Kiosked";;
             return creativeFormatted;
         },
-
+        mustFormattedScript: function(url, ad_unit, device, ad_size) {
+            var mustFormatted = url + " - " + req.body.ad_type + " - " + ad_size;
+            return mustFormatted;
+        }
     };
-    internalFormats.ksspFormat = {
-
-        region: req.body.region,
-        publisher_name: req.body.publisher_name,
-        section_layout: ksspFormatted.section_layout(req.body.region, req.body.publisher_name, req.body.placement_size),
-        section: ksspFormatted.section(req.body.region, req.body.url),
-        campaign: ksspFormatted.campaign(req.body.region, req.body.url, "Kiosked"),
-        line_item: ksspFormatted.line_item(req.body.region, req.body.url, req.body.placement_size),
-        creative: ksspFormatted.creative(req.body.region, req.body.url, req.body.placement_size)
-
-    };
-    internalFormats.inputNewSite = {
-        url: req.body.url,
-        pubID: req.body.pubID,
-        siteID: req.body.siteID,
-        ad_unit: req.body.ad_unit,
-        device: req.body.device,
-        placement_size: req.body.placement_size,
-    };
-
-    var must = {};
-    must.mustFormattedScript = function  (url, ad_unit, device, placement_size) {
-              var mustFormatted = req.body.url + " - " + req.body.ad_type + " - " + req.body.placement_size;
-              return mustFormatted;
-          };
-    must.mustFormatted = this.mustFormattedScript(req.body.url, req.body.ad_unit, req.body.device, req.body.placement_size);
 
     console.log(req.body);
 
-    db.collection('script_formatter').save(allScriptsAndFormats, function(err, result) {
-        if (err) return console.log(err)
+    db.collection('script_formatter').save(requestBody, function(err, result) {
+        if (err)
+            return console.log(err)
 
         console.log('script_formatter posted successfully!!!');
 
