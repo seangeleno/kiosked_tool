@@ -172,6 +172,11 @@ fieldset {
     border: 1px solid silver
 }
 
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}
+
 legend {
     padding: 0;
     border: 0
