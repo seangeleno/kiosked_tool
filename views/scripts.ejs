@@ -1,8 +1,22 @@
-<!-- SCRIPTS AND LINKED FILES GO HERE -->
-<% include ../public/partials/header %>
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="en">
 
-    <!-- NAV BAR GOES HERE -->
-    <% include ../public/partials/navbar %>
+<head>
+    <% include ../public/partials/head %>
+</head>
+
+<link rel="stylesheet" href="css/index.css">
+</head>
+
+<body class="container">
+
+    <header>
+        <% include ../public/partials/header %>
+    </header>
+
+    <main>
+
         <br>
         <div class="container">
             <!-- JUMBOTRON GOES HERE -->
@@ -12,15 +26,15 @@
 
                     <!-- pubid, siteid, dropdowns with size and device row -->
                     <div class="row">
-                      <div class="col-md-6">
-                        <h5><span class="label label-primary">Publisher ID</span></h5>
-                          <div class="input-group">
-                              <input type="text" name="pubID" class="form-control" placeholder="PUBLISHER ID#" aria-describedby="basic-addon1">
-                          </div>
-                      </div>
+                        <div class="col-md-6">
+                            <h5><span class="label label-primary">Publisher ID</span></h5>
+                            <div class="input-group">
+                                <input type="text" name="pubID" class="form-control" placeholder="PUBLISHER ID#" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
 
                         <div class="col-md-6">
-                          <h5><span class="label label-primary">Site ID</span></h5>
+                            <h5><span class="label label-primary">Site ID</span></h5>
                             <div class="input-group">
                                 <input type="text" name="siteID" class="form-control" placeholder="SITE ID#" aria-describedby="basic-addon1">
                             </div>
@@ -29,66 +43,66 @@
                     <br>
                     <br>
                     <div class="row">
-                      <div class="col-md-4">
-                        <h4><span class="label label-success" name="">Region</span></h4>
-                      </div>
-                      <div class="col-md-4">
-                      <h4><span class="label label-warning" name="">Device</span></h4>
-                      </div>
-                      <div class="col-md-4">
-                        <h4><span class="label label-primary" name="">Size</span></h4>
-                      </div>
+                        <div class="col-md-4">
+                            <h4><span class="label label-success" name="">Region</span></h4>
+                        </div>
+                        <div class="col-md-4">
+                            <h4><span class="label label-warning" name="">Device</span></h4>
+                        </div>
+                        <div class="col-md-4">
+                            <h4><span class="label label-primary" name="">Size</span></h4>
+                        </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-4">
                             <div class="btn-group" data-toggle="buttons">
-                              <label class="btn btn-primary">
+                                <label class="btn btn-primary">
                                 <input type="radio" name="na" id="option1" class="form-control" autocomplete="off" checked> NA</input>
                               </label>
-                              <label class="btn btn-primary">
+                                <label class="btn btn-primary">
                                 <input type="radio" name="emea" id="option2" class="form-control" autocomplete="off"> EMEA</input>
                               </label>
-                              <label class="btn btn-primary">
+                                <label class="btn btn-primary">
                                 <input type="radio" name="apac" id="option3" class="form-control" autocomplete="off"> APAC</input>
                               </label>
-                          </div>
+                            </div>
                         </div>
 
                         <div class="col-md-4 ">
                             <!-- Split button -->
                             <div class="btn-group" data-toggle="buttons">
-                              <label class="btn btn-primary active">
+                                <label class="btn btn-primary active">
                                 <input type="radio" name="all_devices" id="option1" class="form-control" autocomplete="off" checked> All Devices
                               </label>
-                              <label class="btn btn-primary">
+                                <label class="btn btn-primary">
                                 <input type="radio" name="desktop" id="option2" class="form-control" autocomplete="off"> Desktop
                               </label>
-                              <label class="btn btn-primary">
+                                <label class="btn btn-primary">
                                 <input type="radio" name="tablet" id="option3" class="form-control" autocomplete="off"> Tablet
                               </label>
-                              <label class="btn btn-primary">
+                                <label class="btn btn-primary">
                                 <input type="radio" name="mobile" id="option3" class="form-control" autocomplete="off"> Mobile
                               </label>
-                          </div>
+                            </div>
                         </div>
 
                         <div class="col-md-4 ">
                             <!-- Split button -->
                             <div class="btn-group" data-toggle="buttons">
-                              <label class="btn btn-primary active">
+                                <label class="btn btn-primary active">
                                 <input type="radio" name="all_sizes" id="all_sizes" autocomplete="off" class="form-control" checked> All Sizes</input>
                               </label>
-                              <label class="btn btn-primary">
+                                <label class="btn btn-primary">
                                 <input type="radio" name="728x90" id="728x90" class="form-control" autocomplete="off"> 728x90</input>
                               </label>
-                              <label class="btn btn-primary">
+                                <label class="btn btn-primary">
                                 <input type="radio" name="320x50" id="320x50" class="form-control" autocomplete="off"> 320x50</input>
                               </label>
-                              <label class="btn btn-primary">
+                                <label class="btn btn-primary">
                                 <input type="radio" name="300x250" id="300x250" class="form-control" autocomplete="off"> 300x250</input>
                               </label>
-                          </div>
+                            </div>
                         </div>
                     </div>
                     <br>
@@ -113,20 +127,29 @@
                     </div>
                     <!-- url input -->
 
-                  </div>
-              <br>
+            </div>
+            <br>
 
 
 
-</form>
-                <!-- end of form     -->
+            </form>
+            <!-- end of form     -->
 
             <!-- end of jumbotron       -->
+
+            <!-- begin script output -->
             <% include ../public/partials/formatted_scripts %>
-
-          </div>
-
+                <!-- end script output -->
+        </div>
         <!-- end of container       -->
 
-  <!-- FOOTER + JAVASCRIPTS GO HERE -->
-  <% include ../public/partials/footer %>
+        <!-- END THE FEATURETTES -->
+    </main>
+
+
+    <!-- FOOTER -->
+    <% include ../public/partials/footer %>
+        <!-- FOOTER -->
+</body>
+
+</html>

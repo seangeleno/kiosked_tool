@@ -1,0 +1,24 @@
+<% include ../public/partials/head %>
+    <link rel="stylesheet" href="css/user.css">
+    <div class="container">
+
+        <h3 class="text-muted">Auth0 - Sign-In Successful</h3>
+        <div class="panel panel-primary">
+            <div class="panel panel-heading">
+                <p class="lead">Welcome
+                    <%= user.nickname %>
+                </p>
+            </div>
+            <div class="panel-body">
+
+                <img src="<%= user.picture %>" alt="" class="profile_pic" />
+            </div>
+
+        </div>
+        <br>
+
+        <div class="panel col-md-offset-6">
+
+            <span class="btn btn-lg btn-danger center"><a href="/logout">Logout</a></span>
+        </div>
+    </div>

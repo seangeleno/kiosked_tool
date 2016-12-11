@@ -1,118 +1,119 @@
 <!-- url, hardcoded and dfp scripts row -->
-<% for (var i = 0 ; i < script_formatter.length ; i++){%>
+<% for (var i = 0 ; i < scripts.length ; i++){%>
 <div class="panel panel-primary">
-  <div class="panel-heading">
-  <h3 class="panel-title">MongoDB Record ID: <%= script_formatter[i]._id %></h3>
-</div>
+    <div class="panel-heading">
+        <h3 class="panel-title">MongoDB Record ID: <%= scripts[i]._id %></h3>
+    </div>
     <div class="panel-body">
-      <!-- url panel -->
-      <div class="col-md-4">
+        <!-- url panel -->
+        <div class="col-md-4">
             <div class="panel panel-success">
-              <div class="panel-heading">
-                <h3 class="panel-title">URL</h3>
-              </div>
-              <div class="panel-body">
-                <%= script_formatter[i].url %>
-              </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">URL</h3>
+                </div>
+                <div class="panel-body">
+                    <%= scripts[i].url %>
+                </div>
             </div>
             <div class="panel panel-success">
-              <div class="panel-heading">
-                <h3 class="panel-title">Publisher ID#</h3>
-              </div>
-              <div class="panel-body">
-                <%= script_formatter[i].pubID %>
-              </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Publisher ID#</h3>
+                </div>
+                <div class="panel-body">
+                    <%= scripts[i].pubID %>
+                </div>
             </div>
             <div class="panel panel-success">
-              <div class="panel-heading">
-                <h3 class="panel-title">Site ID#</h3>
-              </div>
-              <div class="panel-body">
-                <%= script_formatter[i].siteID %>
-              </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Site ID#</h3>
+                </div>
+                <div class="panel-body">
+                    <%= scripts[i].siteID %>
+                </div>
             </div>
             <div class="panel panel-success">
-              <div class="panel-heading">
-                <h3 class="panel-title">Ad Unit</h3>
-              </div>
-              <div class="panel-body">
-                <%= script_formatter[i].ad_unit %>
-              </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Ad Unit</h3>
+                </div>
+                <div class="panel-body">
+                    <%= scripts[i].ad_unit %>
+                </div>
             </div>
             <div class="panel panel-success">
-              <div class="panel-heading">
-                <h3 class="panel-title">Ad Size</h3>
-              </div>
-              <div class="panel-body">
-                <%= script_formatter[i].ad_size %>
-              </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Ad Size</h3>
+                </div>
+                <div class="panel-body">
+                    <%= scripts[i].ad_size %>
+                </div>
             </div>
             <div class="panel panel-success">
-              <div class="panel-heading">
-                <h3 class="panel-title">Device</h3>
-              </div>
-              <div class="panel-body">
-                <%= script_formatter[i].device %>
-              </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Device</h3>
+                </div>
+                <div class="panel-body">
+                    <%= scripts[i].device %>
+                </div>
             </div>
-      </div>
+        </div>
 
-      <!-- pubid panel -->
-      <div class="col-md-4">
-        <div class="panel panel-warning">
-          <div class="panel-heading">
-            <h3 class="panel-title">El Clasico</h3>
-          </div>
-          <div class="panel-body">
-            <%= script_formatter.hardcodedScript %>
-          </div>
-      </div>
-        <div class="panel panel-warning">
-          <div class="panel-heading">
-            <h3 class="panel-title">Section Layout</h3>
-          </div>
-          <div class="panel-body">
-            <%= script_formatter[i].section_layout %>
-          </div>
-      </div>
-        <div class="panel panel-warning">
-          <div class="panel-heading">
-            <h3 class="panel-title">Section</h3>
-          </div>
-          <div class="panel-body">
-            <%= script_formatter[i].sectionID %>
-          </div>
-      </div>
-        <div class="panel panel-warning">
-          <div class="panel-heading">
-            <h3 class="panel-title">campaign</h3>
-          </div>
-          <div class="panel-body">
-            <%= script_formatter[i].campaign %>
-          </div>
-      </div>
-        <div class="panel panel-warning">
-          <div class="panel-heading">
-            <h3 class="panel-title">Placement</h3>
-          </div>
-          <div class="panel-body">
-            <%= script_formatter[i].placementID %>
-          </div>
+        <!-- pubid panel -->
+        <div class="col-md-4">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">El Clasico</h3>
+                </div>
+                <div class="panel-body">
+                    <%= scripts.hardcodedScript %>
+                </div>
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Section Layout</h3>
+                </div>
+                <div class="panel-body">
+                    <%= scripts[i].section_layout %>
+                </div>
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Section</h3>
+                </div>
+                <div class="panel-body">
+                    <%= scripts[i].sectionID %>
+                </div>
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">campaign</h3>
+                </div>
+                <div class="panel-body">
+                    <%= scripts[i].campaign %>
+                </div>
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Placement</h3>
+                </div>
+                <div class="panel-body">
+                    <%= scripts[i].placementID %>
+                </div>
+            </div>
+        </div>
+
+        <!-- DFP panel -->
+        <div class="col-lg-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">DFP Format</h3>
+                </div>
+                <div class="panel-body">
+                    <%= scripts[i].dfpFormattedScript %>
+                </div>
+            </div>
         </div>
     </div>
-
-      <!-- DFP panel -->
-      <div class="col-lg-4">
-        <div class="panel panel-danger">
-          <div class="panel-heading">
-            <h3 class="panel-title">DFP Format</h3>
-          </div>
-          <div class="panel-body">
-            <%= script_formatter[i].dfpFormattedScript %>
-          </div>
-        </div>
-      </div>
-
-
+    <!-- main panel body end -->
 </div>
-<% } %>
+<!-- primary panel end -->
+    <!-- <% } %> -->
